@@ -1,5 +1,5 @@
 #using scanf in programs is dangerous as there is chances for buffer overrun. 
- better option to use is fgets(*ptr,size,stdin) since it specifies how many chars  to read exactly.also fgets will leave the input buffer intact after reading the specified number of characters.
+ better option to use is fgets(*ptr,size,stdin) since it specifies how many chars  to read exactly.also fgets will leave the input buffer intact after reading the specified number of characters.Never use gets(). Because it is impossible to tell without knowing the data in advance how many characters gets() will read, and because gets() will continue to store characters past the end of the buffer, it is extremely dangerous to use. It has been used to break computer security. Use fgets() instead.
 
 #we can use scanf("%[^\n]s",str) to read until \n is encounterd . this can also read strings with space
 
