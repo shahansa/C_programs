@@ -1,3 +1,9 @@
+/****************************************************************
+*   file : 1_1.c
+*   purpose : to find if a string contains duplicate characters
+*   author : shahansha salim ,25 may,2017
+****************************************************************/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -8,6 +14,11 @@
 #define ASCII_SIZE 128
 #define CLEAR 0
 
+/*************************************************************** 
+   function processString
+   input : pointer to string to be processed
+   returns: true or false depending on program success
+****************************************************************/
 int processString(char *string)
 {
 	int length=strlen(string);
@@ -18,7 +29,7 @@ int processString(char *string)
         {
  		printf("\nERROR : duplicate characters present\n");
                 //according to pigeon hole principle, string must have duplicate
-                // characters
+                // characters since it is having more characters than total number of ascii chars.
 		return FALSE;
 	}
 	for(i=0;i<length;i++)
@@ -34,11 +45,17 @@ int processString(char *string)
 	return TRUE;
 }
 
+/**************************************************************** 
+   main function
+   input : none
+   return : true or false depending on success or failure run
+****************************************************************/
+
 int main()
 {
  
 	char string[BUFFER_SIZE];	
-#if 0    //did not get this reading scheme to work.using scanf for the time being.  Should be fixed later.
+#if 0    //did not get this dynamic reading scheme to work.using scanf for the time being.  Should be fixed later.
         char *string = NULL,buffer[BUFFER_SIZE];
 	int length=BUFFER_SIZE;
         do 
