@@ -1,0 +1,6 @@
+#using scanf in programs is dangerous as there is chances for buffer overrun. 
+ better option to use is fgets(*ptr,size,stdin) since it specifies how many chars  to read exactly. 
+
+#we can use scanf("%[^\n]s",str) to read until \n is encounterd . this can also read strings with space
+
+
