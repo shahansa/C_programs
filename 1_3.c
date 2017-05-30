@@ -85,8 +85,7 @@ int main(void)
 	int count1[256],count2[256];
         /*
 	*memset is required since array was showing some random values in
-	*one position. and the for loop was not running fully. this is contrary 
-	* to what studied in college that array elements will be 0 initially. 
+	*one position.
         */
  	memset(count1,0,sizeof(count1));
 	memset(count2,0,sizeof(count2));
