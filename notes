@@ -7,4 +7,13 @@
 
 #we can use scanf("%[^\n]s",str) to read until \n is encounterd . this can also read strings with space
 
+#the scanf scheme above was not working when two successive scanf are performed.
+
+#integer array must be memset before using. Saw once case that one position in array was containing some garbage value. this is contrary to what studied in college that array elements will be 0 during initialization. 
+this initialization thing should be remembered.everything incl array.
+automatic variables => contain junk (not initialized)
+global variables    => initialized to zero
+static variables    => initialized to zero if not initialized.
+int b[10] = {0};   //this is also valid instead of memset.
+
 
