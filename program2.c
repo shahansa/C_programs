@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define SUCCESS 0
 #define FAILURE 1
@@ -22,40 +23,51 @@
 
 int processArray(int arr[],int size)
 {
-    int maxSum=0,currentSum=0,prevnum;
-    int i=0,j=0;
+	int maxSum=0,localSum=0;
+	int powSize = pow(2,size);
+	int i,j,prev=0,flag=0;
 
-    if(NULL == arr || size <= 0)
-    {
-        return FAILURE;
-    }
-    maxSum = arr[0];    /*else when array is full of -ve numbers, maxSum will never update*/
-
-    for(i=0; i<size ; i++)
-    {
-       currentSum = arr[i];   /*start looking from this number*/
-       prevnum = arr[i];      /*this is to check continuity of sequence*/
-
-       for(j = i+1;j<size;j++)
-       {
-	       if(arr[j] > prevnum && currentSum < currentSum+arr[j])
-	       {
-                    currentSum = currentSum + arr[j]; /*if we found a match, update values*/
-		    prevnum = arr[j];
-		    if(maxSum  < currentSum)    /*update maxsum if value satisfies criteria*/
-                    {
-                        maxSum = currentSum;
-		    }
+	for(i=0; i<powSize; i++)
+	{
+		for(j=0; j<size; j++)
+		{
+			if(i & (1<<j))
+			{
+				if(flag == 0)
+				{
+					prev=arr[j];
+					flag = 1;
+		    		}
+				else
+				{
+					if(prev > arr[j])
+					{
+						break;
+					}
+				}
+				localSum += arr[j];
+				prev = arr[j];
+				if(localSum > maxSum)
+				{
+					maxSum = localSum;
+				}
+			}
 		}
-	}
-     }
-     if(maxSum < currentSum) /*in case last number in array is very large*/
-     { 
-         maxSum = currentSum; 
-     }                        
-     
-     printf("\n maxSum = %d\n",maxSum);
-     return SUCCESS;
+		flag = 0;
+		localSum = 0;		
+	   }
+	   if(localSum > maxSum)
+	   {
+		   maxSum = localSum;
+ 	   }
+
+	   printf("\nMaxSum = %d\n",maxSum);
+
+
+
+
+
+    	return SUCCESS;
 }
 
 
@@ -82,33 +94,37 @@ int main(void)
 
 #if 0
 
-===========================TEST CASES=============
+======================TEST CASES============
+[lemontree@Arch C_programs]$ ./a.out
+5
+5 80 70 79 100
 
+MaxSum = 254
 [lemontree@Arch C_programs]$ ./a.out
 6
 1 2 6 0 -3 9
 
- maxSum = 18
-[lemontree@Arch C_programs]$ ./a.out
-6
-43 32 33 34 35 20
-
- maxSum = 134
+MaxSum = 18
 [lemontree@Arch C_programs]$ ./a.out
 6
 -3 1 2 -2 4 -1
 
- maxSum = 7
-[lemontree@Arch C_programs]$ ./a.out
-3
--3 -2 -1
+MaxSum = 7
 
- maxSum = -1
-[lemontree@Arch C_programs]$ 
+
+
+
+
+
+
+
+
+
 
 
 
 #endif
+
 
 #endif 
 
