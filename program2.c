@@ -2,7 +2,7 @@
 #define SUBSEQ_ARR_SUM
 
 /* program to find maximum sum of increasing subsequence(may not be contiguous)
- * time complexity is not a concern here
+ * time complexity is not a concern here. time complexity is O(n.2^n)
  * Author : Shahan, 03-Apr-2018
  */
 
@@ -14,6 +14,11 @@
 #define FAILURE 1
 #define BUFFER_SIZE 1024
 
+int max(int a,int b)
+{
+	return(a>b?a:b);
+}
+
 /* function : processArray
  * purpose  : iteratively process the array to form all possible sub sequences
  *            which are in increasing order and find the maximum sum among them
@@ -23,19 +28,19 @@
 
 int processArray(int arr[],int size)
 {
-	int maxSum=0,localSum=0;
+	int maxSum=arr[0],localSum=arr[0];
 	int powSize = pow(2,size);
 	int i,j,prev=0,flag=0;
 
-	for(i=0; i<powSize; i++)
+	for(i=1; i<powSize; i++)  /*if i in binary is 010, sequence generated will have only middle element*/
 	{
 		for(j=0; j<size; j++)
 		{
-			if(i & (1<<j))
+			if(i & (1<<j))   /*check which element bit is set*/
 			{
 				if(flag == 0)
 				{
-					prev=arr[j];
+					prev=arr[j]; /*prev is to check if sequence is increasing*/
 					flag = 1;
 		    		}
 				else
@@ -47,19 +52,12 @@ int processArray(int arr[],int size)
 				}
 				localSum += arr[j];
 				prev = arr[j];
-				if(localSum > maxSum)
-				{
-					maxSum = localSum;
-				}
+				maxSum = max(localSum,maxSum);
 			}
 		}
 		flag = 0;
 		localSum = 0;		
 	   }
-	   if(localSum > maxSum)
-	   {
-		   maxSum = localSum;
- 	   }
 
 	   printf("\nMaxSum = %d\n",maxSum);
 
@@ -111,8 +109,11 @@ MaxSum = 18
 
 MaxSum = 7
 
+[lemontree@Arch C_programs]$ ./a.out
+3
+-3 -2 -1
 
-
+MaxSum = -1
 
 
 
