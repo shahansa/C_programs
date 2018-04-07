@@ -7,11 +7,20 @@
 
 
 /*
- *Matrix transposition must be a familiar task. This problem is a generalization of it.  We can assume matrix transposition as a permutation of the two dimensions of the matrix. Suppose the matrix dimensions are 16 x 8, the permutation for transpose is "1 0" where "1" means the first dimension of output comes from the 2nd (starting from 0) dimension of input and "0" means the second dimension of output comes from the first dimension of input. The only other permutation possible here is "0 1" which gives output same as input. For a 3D array, we can have 3!= 6 possible permutations possible. Now we can generalize this problem. Given any higher dimensional array -- called a tensor -- and a given permutation, we should produce the output tensor. Input must be read from a file and should be of the following form:
+ *Matrix transposition must be a familiar task. This problem is a generalization of it.  
+ We can assume matrix transposition as a permutation of the two dimensions of the matrix. 
+ Suppose the matrix dimensions are 16 x 8, the permutation for transpose is "1 0" where
+ "1" means the first dimension of output comes from the 2nd (starting from 0) dimension of input
+ and "0" means the second dimension of output comes from the first dimension of input. 
+ The only other permutation possible here is "0 1" which gives output same as input. 
+ For a 3D array, we can have 3!= 6 possible permutations possible. Now we can generalize this problem. 
+ Given any higher dimensional array -- called a tensor -- and a given permutation, we should produce the output tensor. 
+ Input must be read from a file and should be of the following form:
 
 5   15 14 13 12 11       4 3 2 1 0
 
-where the first entry denotes the number of dimensions followed by as many dimension values (lowest most or fastest varying dimension first) followed by the required permutation - explanation given in the previous paragraph. 
+where the first entry denotes the number of dimensions followed by as many dimension values (lowest most or fastest 
+varying dimension first) followed by the required permutation - explanation given in the previous paragraph. 
 
 */
 
